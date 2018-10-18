@@ -17,6 +17,7 @@ cd react
 npm install 
 
 npm start 
+```
 
 #### Notice
 
@@ -153,13 +154,6 @@ npm install
 
 npm start 
 ```
-#### 注意
-
-如果不启动mock服务，那么登录不进去内页，所以务必再开启个node进程启动mockjs服务
-```
-npm run mock 
-```
-
 
 想要体验聊天室功能  先开启socket服务 运行命令
 
