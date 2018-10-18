@@ -131,7 +131,7 @@ login(){
 
 
 ## communication
-If you want to communicate with other friends who use react,you can join the react QQ group I created：598372207~
+If you want to communicate with other friends who use react,you can join the react QQ group I created：159697743~
 
 
 
@@ -276,6 +276,6 @@ login(){
 
 ## 交流
 想跟其他的使用react的小伙伴们交流的话，
-可以加入我创建的reactQQ群：598372207~
+可以加入我创建的reactQQ群：5159697743~
 
 

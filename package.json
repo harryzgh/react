@@ -8,12 +8,20 @@
   },
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --config ./scripts/webpack.dev.config.js",
+    "start": "concurrently \"npm run dev\" \"npm run mock\"",
+    "dev": "webpack-dev-server --config ./scripts/webpack.dev.config.js",
     "testing": "webpack --config ./scripts/webpack.testing.config.js",
     "build": "webpack --config ./scripts/webpack.prod.config.js",
     "lint": "eslint ./ --cache --fix --ignore-pattern .gitignore",
     "mock": "supervisor -w mock ./app/mocks/http.js",
-    "chat": "node ./scripts/chatServer.js"
+    "chat": "node ./scripts/chatServer.js",
+    "precommit": "lint-staged",
+    "preCommitInit": "node ./node_modules/husky/lib/installer/bin.js install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "author": "duxianwei",
   "contributors": [
@@ -35,6 +43,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "concurrently": "^4.0.1",
     "copy-webpack-plugin": "^4.2.3",
     "cross-env": "^5.1.4",
     "css-loader": "~0.28.9",
@@ -46,7 +55,6 @@
     "eslint-plugin-react": "~7.5.1",
     "extract-text-webpack-plugin": "~3.0.2",
     "file-loader": "~1.1.6",
-    "ghooks": "^2.0.2",
     "happypack": "^5.0.0",
     "html-webpack-plugin": "~2.30.1",
     "http-proxy": "~1.16.2",
@@ -74,9 +82,9 @@
     "draft-js": "^0.10.3",
     "echarts": "^4.0.2",
     "esri-loader": "0.3.1",
+    "husky": "^1.1.2",
     "immutable": "~3.8.1",
-    "isomorphic-fetch": "~2.2.1",
-    "moment": "~2.20.1",
+    "lint-staged": "^7.3.0",
     "rc-queue-anim": "^1.4.1",
     "rc-tween-one": "~1.7.3",
     "react": "^16.0.0",

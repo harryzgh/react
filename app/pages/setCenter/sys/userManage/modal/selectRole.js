@@ -10,11 +10,9 @@ import { fetchUserSetRole } from '@apis/manage'
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
 
-@connect(
-  (state, props) => ({
-    config: state.config,
-  })
-)
+@connect((state, props) => ({
+  config: state.config,
+}))
 
 export default class roleSelect extends Component {
   constructor(props) {
@@ -63,8 +61,7 @@ export default class roleSelect extends Component {
   render() {
     const { select, values, visible, onCancel } = this.props
     const selectNodes = select.map((item, index) =>
-      <RadioButton value={item.id} key={index}>{item.name} </RadioButton>
-    )
+      <RadioButton value={item.id} key={index}>{item.name} </RadioButton>)
     return (
       <Modal
         visible={visible}

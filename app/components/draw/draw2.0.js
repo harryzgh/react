@@ -59,7 +59,7 @@ export default class Drawer extends Component {
       this.initDrawer()
     } else {
       this.removeDrawer()
-    }*/
+    } */
   }
 
   componentDidUpdate() {
@@ -91,12 +91,12 @@ export default class Drawer extends Component {
         drawTrasformClass: 'draw-enter',
         maskTrasformClass: 'mask-enter',
       }, () =>
-          setTimeout(() => {
-            this.setState({
-              drawTrasformClass: '',
-              maskTrasformClass: '',
-            })
-          }, 300))
+        setTimeout(() => {
+          this.setState({
+            drawTrasformClass: '',
+            maskTrasformClass: '',
+          })
+        }, 300))
     }
   }
 
@@ -106,36 +106,36 @@ export default class Drawer extends Component {
       drawTrasformClass: 'draw-leave',
       maskTrasformClass: 'mask-leave',
     }, () =>
-        setTimeout(() => {
-          this.setState({
-            drawTrasformClass: '',
-            maskTrasformClass: '',
-          })
-          document.body.removeChild(this.popup)
-          ReactDOM.unmountComponentAtNode(this.popup)
+      setTimeout(() => {
+        this.setState({
+          drawTrasformClass: '',
+          maskTrasformClass: '',
+        })
+        document.body.removeChild(this.popup)
+        ReactDOM.unmountComponentAtNode(this.popup)
 
-          this.props.onCancel()
-        }, 200))
+        this.props.onCancel()
+      }, 200))
   }
 
   // 判断抽屉的尺寸class
   getDrawerSize = (size) => {
     switch (size) {
-    case 'sm':
-      this.setState({
-        drawerSizeClass: 'drawer-sm',
-      })
-      break
-    case 'lg':
-      this.setState({
-        drawerSizeClass: 'drawer-lg',
-      })
-      break
-    default:
-      this.setState({
-        drawerSizeClass: 'drawer-base',
-      })
-      break
+      case 'sm':
+        this.setState({
+          drawerSizeClass: 'drawer-sm',
+        })
+        break
+      case 'lg':
+        this.setState({
+          drawerSizeClass: 'drawer-lg',
+        })
+        break
+      default:
+        this.setState({
+          drawerSizeClass: 'drawer-base',
+        })
+        break
     }
   }
 
@@ -173,7 +173,7 @@ export default class Drawer extends Component {
           </div>
         </div>
       </div>,
-      this.popup
+      this.popup,
     )
   }
 

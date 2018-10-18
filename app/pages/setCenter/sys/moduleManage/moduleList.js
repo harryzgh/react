@@ -10,7 +10,9 @@ export default class ModuleList extends Component {
   }
 
   renderColumn() {
-    const { onDelete, onModify, onUpdataStatus, onAddNode, buttonList } = this.props
+    const {
+      onDelete, onModify, onUpdataStatus, onAddNode, buttonList,
+    } = this.props
     return [
       {
         title: '功能',
@@ -63,7 +65,7 @@ export default class ModuleList extends Component {
           return (
             record.resName !== '模块管理' ? (
               <span>{record.status ? <span className="error">未上线</span> : <span className="success">已上线</span>}</span>
-              ) : <span className="success">已上线</span>
+            ) : <span className="success">已上线</span>
           )
         },
       },

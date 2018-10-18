@@ -120,6 +120,7 @@ export default class App extends Component {
           this.topMenuReskeyChild = item.children
         }
       }
+      // eslint-disable-next-line
       const _resKey = `${item.resKey.replace(/[\$\.\?\+\^\[\]\(\)\{\}\|\\\/]/g, '\\$&').replace(/\*\*/g, '[\\w|\\W]+').replace(/\*/g, '[^\\/]+')}$`
       if (new RegExp(_resKey).test(pathname)) {
         // console.log(item.id)

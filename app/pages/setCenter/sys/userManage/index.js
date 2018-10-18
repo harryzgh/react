@@ -18,6 +18,7 @@ import SelectRole from './modal/selectRole'
 
 const FormItem = Form.Item
 const { Content, Sider } = Layout
+const { fetchBtns } = require('@configs/common')
 
 // 连接公用常量、后端返回的数据方法  并放置在props里面调用
 @connect((state, props) => ({
@@ -98,7 +99,6 @@ export default class app extends Component {
 
   // 发送获取当前菜单的按钮权限
   getBtnRights() {
-    const { fetchBtns } = require('@configs/common')
     fetchBtns(this, btnRights => this.setState({ btnRights }))
   }
 

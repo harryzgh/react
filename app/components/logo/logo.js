@@ -38,7 +38,8 @@ export default class app extends Component {
   }
 
   componentDidMount() {
-    this.dom = ReactDOM.findDOMNode(this)
+    // this.dom = ReactDOM.findDOMNode(this)
+    this.dom = this.componentDom
     this.createPointData();
   }
 
@@ -163,14 +164,16 @@ export default class app extends Component {
   };
 
   updateTweenData = () => {
-    this.dom = ReactDOM.findDOMNode(this);
+    // this.dom = ReactDOM.findDOMNode(this);
+    this.dom = this.componentDom
     this.sideBox = ReactDOM.findDOMNode(this.sideBoxComp);
+    // this.sideBox = this.sideBoxComp;
     ((this.gather && this.disperseData) || this.gatherData)();
     this.gather = !this.gather;
   };
 
   render() {
-    return (<div className="logo-gather-demo-wrapper">
+    return (<div className="logo-gather-demo-wrapper" ref={c => this.componentDom = c}>
       <canvas id="canvas" />
       <TweenOne
         animation={this.state.boxAnim}
