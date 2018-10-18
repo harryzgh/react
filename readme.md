@@ -2,7 +2,7 @@
 # Readme for English
 ## Technology stack
 
-react@16.0 + redux@3.7.2 + react-router@3.2.0 + webpack@3.10.0 + axios@0.18.0 + less@2.7.1 + antd@3.1.3
+react@16.5.2 + redux@3.7.2 + react-router@3.2.0 + webpack@3.10.0 + axios@0.18.0 + less@2.7.1 + antd@3.10.1
 
 
 
@@ -17,11 +17,7 @@ cd react
 npm install 
 
 npm start 
-```
-Open another node service to open the mock interface service,if you don't start the mock interface service, you won't login into the inner page
-```
-npm run mock 
-```
+
 #### Notice
 
 If you wan to experience the chatroom, you need to start socket service first, so you need to run another node service like this
@@ -141,7 +137,7 @@ If you want to communicate with other friends who use react,you can join the rea
 
 ## 项目技术栈
 
-react@16.0 + redux@3.7.2 + react-router@3.2.0 + webpack@3.10.0 + axios@0.18.0 + less@2.7.1 + antd@3.1.3
+react@16.5.2 + redux@3.7.2 + react-router@3.2.0 + webpack@3.10.0 + axios@0.18.0 + less@2.7.1 + antd@3.10.1
 
 
 
@@ -262,13 +258,6 @@ login(){
 
 
 
-## 总结
-
-1、这整个技术栈是我们公司前端部门在用的，写熟悉了之后，用来做后台管理系统类的实在是很方便，大家都表示再也不要用jQuery来做这样子的系统了
-
-2、目前来说，不足的地方是在于没有很好的区分dev环境跟pro环境，这个后面弄好了再补充上来；mock数据现在还不是那么的方便，需要自己一个个的添加api的json文件
-
-
 ## License
 
 [MIT](https://github.com/duxianwei520/react/blob/master/LICENSE)
@@ -276,6 +265,6 @@ login(){
 
 ## 交流
 想跟其他的使用react的小伙伴们交流的话，
-可以加入我创建的reactQQ群：5159697743~
+可以加入我创建的reactQQ群：159697743
 
 
