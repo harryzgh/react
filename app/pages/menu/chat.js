@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import ReactDom from 'react-dom'
+// import ReactDom from 'react-dom'
 import { connect } from 'react-redux'
 import { hashHistory } from 'react-router'
 import { Button, Input, Icon, Form, Dropdown, message } from 'antd'
@@ -64,7 +64,7 @@ export default class popCheck extends Component {
     // script.src = '../../components/socket.io.js'
     // document.body.appendChild(script)
     // script.onload = () => {
-    const url = location.hostname
+    const url = window.location.hostname
     that.socket = io.connect(`http://${url}:3333/`)
 
     // 测试是否链接上websocket
@@ -186,8 +186,8 @@ export default class popCheck extends Component {
   // 初始化表情选择列表
   _initEmoji() {
     const emojis = []
-    const url = location.href.split('#')[0]
-    for (let i = 1; i < 70; i++) {
+    const url = window.location.href.split('#')[0]
+    for (let i = 1; i < 70; i += 1) {
       emojis.push(i)
     }
     return (
@@ -199,7 +199,7 @@ export default class popCheck extends Component {
               title={item}
               className="face"
               onClick={() => this.faceClick(item)}
-            ><img src={`${url}images/emoji/${item}.gif`} />
+            ><img alt="" src={`${url}images/emoji/${item}.gif`} />
             </span>))
         }
       </div>
@@ -208,17 +208,18 @@ export default class popCheck extends Component {
 
   // 将用户发送的表情包转义
   _showEmoji = (msg) => {
-    const url = location.href.split('#')[0]
+    const url = window.location.href.split('#')[0]
     let match
     let result = msg
     const reg = /\[emoji:\d+\]/g
     let emojiIndex
     const totalEmojiNum = 70
+    // eslint-disable-next-line
     while (match = reg.exec(msg)) {
       emojiIndex = match[0].slice(7, -1)
       // console.log(match)
       if (emojiIndex <= totalEmojiNum) {
-        result = (<img src={`${url}images/emoji/${emojiIndex}.gif`} />)
+        result = (<img alt="" src={`${url}images/emoji/${emojiIndex}.gif`} />)
       }
     }
     return result

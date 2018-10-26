@@ -23,10 +23,8 @@ export default class Index extends Component {
     super(props)
     this.state = {
       loading: false,
-      isFirst: this.props.isFirst,
+      // isFirst: this.props.isFirst,
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.upDateValue = this.upDateValue.bind(this)
   }
 
   // 组件已经加载到dom中
@@ -34,7 +32,7 @@ export default class Index extends Component {
     this.props.form.resetFields()
   }
 
-  upDateValue() {
+  upDateValue = () => {
     if (this.props.pid) {
       this.props.form.setFieldsValue({
         parentid: this.props.pid,
@@ -42,7 +40,7 @@ export default class Index extends Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((errors, values) => {
       if (errors) {
@@ -71,9 +69,10 @@ export default class Index extends Component {
   }
 
   footer() {
+    const { loading } = this.state
     return (
       <div>
-        <Button type="primary" onClick={this.handleSubmit}>确定</Button>
+        <Button type="primary" onClick={this.handleSubmit} loading={loading}>确定</Button>
         <Button onClick={this.props.onCancel}>取消</Button>
       </div>
     )

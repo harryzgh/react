@@ -4,6 +4,6 @@
 !app
 
 
-app/configs
-app/components
-app/pages
+# app/configs
+# app/components
+# app/pages

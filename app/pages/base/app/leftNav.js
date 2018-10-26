@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { hashHistory, Link } from 'react-router'
+import { hashHistory/* , Link  */ } from 'react-router'
 // import { routerActions } from 'react-router-redux'
 import { Menu, Icon, Spin } from 'antd'
-import { updateTabList } from '@actions/tabList'
+// import { updateTabList } from '@actions/tabList'
 import { clearGformCache2 } from '@actions/common'
 import { workBench } from '@config'
 
@@ -16,9 +16,9 @@ export default class LeftNav extends Component {
   constructor(props, context) {
     super(props, context)
 
-    const { pathname } = props.location
+    // const { pathname } = props.location
     this.state = {
-      current: pathname,
+      // current: pathname,
       openKeys: ['sub1'],
       isLeftNavMini: false,
       collapsed: false,
@@ -70,7 +70,7 @@ export default class LeftNav extends Component {
     navList.map((item, index) => {
       // console.log(item.resKey)
       if (item.children && item.children.length > 0) {
-        len++
+        len += 1
       }
       if (item.resKey && curPath === item.resKey.split('$')[0].replace('/', '')) {
         curSub = len
@@ -128,7 +128,7 @@ export default class LeftNav extends Component {
 
   // 二级菜单的生成
   renderLeftNav(options) {
-    const self = this
+    // const self = this
     const children = JSON.parse(sessionStorage.getItem('leftNav')) || []
     return children.map((item, index) => {
       if (!item.children || item.children.length === 0) {
@@ -139,8 +139,9 @@ export default class LeftNav extends Component {
           </Menu.Item>
         )
       }
+      const key = `sub${index}`
       return (
-        <SubMenu key={`sub${index}`}
+        <SubMenu key={key}
           title={
             <span>
               <Icon type="caret-down" title={item.resName} />

@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Spin, Button, Popconfirm, Form, Input, Layout, Radio, Icon, message } from 'antd'
 import TableList from '@tableList'
-import { hashHistory } from 'react-router'
+// import { hashHistory } from 'react-router'
 import { menu } from '@apis/common'
 import {
   fetchRoleList,
@@ -28,7 +28,7 @@ const FormItem = Form.Item
 const { Content, Sider } = Layout
 const RadioButton = Radio.Button
 const RadioGroup = Radio.Group
-const Search = Input.Search
+const { Search } = Input
 
 // 连接公用常量、后端返回的数据方法  并放置在props里面调用
 @connect((state, props) => ({
@@ -76,7 +76,7 @@ export default class app extends Component {
       roleListResult: { list: [], loading: false },
       roleDetailManagResult: { list: [], loading: false },
       roleModuleListInRoleResult: { list: [], loading: false },
-      rloeResResult: { list: [], loading: false },
+      // rloeResResult: { list: [], loading: false },
       rolePeopleResult: { list: [], loading: false },
     }
     this.resultCkecked = ''
@@ -92,7 +92,7 @@ export default class app extends Component {
     this.getData('init')
   }
 
-  // region 收缩业务代码功能
+  // #region 收缩业务代码功能
 
   // 发送获取当前菜单的按钮权限
   // getBtnRights() {
@@ -237,12 +237,13 @@ export default class app extends Component {
   }
 
   // 修改开通的checkbox值
-  handleChenckModify = (values) => {
+  handleCheckModify = (values) => {
     this.resultCkecked = values
   }
 
   // 修改保存
   editSave = () => {
+    console.log(this.resultCkecked)
     fetchUpdateRoleRes({ id: this.state.currRoleId, resourceIds: this.resultCkecked }, (res) => {
       if (res.status === 1) {
         message.success(res.msg)
@@ -445,7 +446,7 @@ export default class app extends Component {
             dataSource={roleModuleListInRoleResult.list}
             loading={roleModuleListInRoleResult.loading}
             checkedId={this.resultCkecked}
-            onChenckModify={this.handleChenckModify}
+            onCheckModify={this.handleCheckModify}
             roleType={this.state.roleType}
             // isReload={this.state.isReload}
             buttonList={this.buttonList}
@@ -485,12 +486,13 @@ export default class app extends Component {
     return null
   }
 
-  // endregion
+  // #endregion
 
   render() {
     const {
       roleDetailManagResult,
       roleListResult,
+      activeTab,
     } = this.state
     const { getFieldDecorator } = this.props.form
     const { btnRights } = this.state
@@ -525,8 +527,12 @@ export default class app extends Component {
               <div className="page-header">
                 <div className="layout-between">
                   <div className="left">
-                    <Button type="primary" className={this.state.activeTab === 'setpeoples' || this.state.activeTab === 'stepTree' ? 'hide' : null} onClick={this.editSave}>保存</Button>
-                    <div className={this.state.activeTab === 'setpeoples' ? 'page-search' : 'hide'}>
+                    <Button
+                      type="primary"
+                      className={activeTab === 'setpeoples' || activeTab === 'stepTree' ? 'hide' : null}
+                      onClick={this.editSave}
+                    >保存</Button>
+                    <div className={activeTab === 'setpeoples' ? 'page-search' : 'hide'}>
                       <Form className="flexrow">
                         <FormItem>
                           {getFieldDecorator('key')(<Input className="input-base-width" size="default" placeholder="请输入关键字进行搜索" />)}

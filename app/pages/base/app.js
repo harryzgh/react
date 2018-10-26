@@ -4,14 +4,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { hashHistory } from 'react-router'
 import { message, LocaleProvider } from 'antd'
-import { validateTickit, parseQueryString } from '@configs/common'
+import { validateTickit/* , parseQueryString */ } from '@configs/common'
 import { loginByKey } from '@apis/common'
 import zhCN from 'antd/lib/locale-provider/zh_CN'
 import '@styles/base.less'
 
 import Header from './app/header'
 import LeftNav from './app/leftNav'
-import TabList from './app/tabList'
+// import TabList from './app/tabList'
 
 
 @connect((state, props) => ({}))
@@ -25,7 +25,7 @@ export default class App extends Component {
       topMenuReskey: 'platformManage', // 默认管理平台
       gMenuList: [], // 当前用户菜单列表
       idRenderChild: false, // 是否加载子组件
-      isHideNav: false, // 是否隐藏左侧菜单
+      // isHideNav: false, // 是否隐藏左侧菜单
       isIframe: false, // 是否隐藏头部
     }
     // this.isLeftNavMini = this.isLeftNavMini.bind(this)
@@ -67,7 +67,7 @@ export default class App extends Component {
         })
       })
     } else if (query.key) {
-      const params = parseQueryString(window.location.href)
+      // const params = parseQueryString(window.location.href)
       loginByKey({ }, (res) => {
         sessionStorage.setItem('key', query.key)
         this.setState({
@@ -128,7 +128,7 @@ export default class App extends Component {
         sessionStorage.setItem('menuId', item.id)
         // debugger
         sessionStorage.setItem('topMenuReskey', this.topMenuReskeyFlag)
-        this.setState({ menuId: item.id, topMenuReskey: this.topMenuReskeyFlag })
+        this.setState({ /* menuId: item.id,  */topMenuReskey: this.topMenuReskeyFlag })
         return null
       } else if (item.children) {
         this.compare(item.children, pathname)
@@ -185,7 +185,7 @@ export default class App extends Component {
   render() {
     const { location, children } = this.props
     const {
-      gMenuList, idRenderChild, isHideNav, isIframe, topMenuReskey, leftNav, isLeftNavMini,
+      gMenuList, idRenderChild, /* isHideNav, */ isIframe, topMenuReskey, leftNav, isLeftNavMini,
     } = this.state
     // console.log(isIframe)
     return (

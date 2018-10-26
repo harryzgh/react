@@ -1,18 +1,10 @@
-/**
- * Created by 江夏云 on 2017/1/5.
- * editor:谢德训 2017-2-15 在头部添加文件修改记录
- */
+
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Radio, Button, Modal, message } from 'antd';
+import { Radio, Button, Modal, message } from 'antd'
 import { fetchUserSetRole } from '@apis/manage'
 
 const RadioGroup = Radio.Group;
 const RadioButton = Radio.Button;
-
-@connect((state, props) => ({
-  config: state.config,
-}))
 
 export default class roleSelect extends Component {
   constructor(props) {

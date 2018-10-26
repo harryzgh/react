@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link, hashHistory } from 'react-router'
+import { /* Link, */ hashHistory } from 'react-router'
 import { Menu, Dropdown, Button, Modal, message, Icon, Row, Col } from 'antd'
 import { brandName } from '@config'
 import { logout } from '@apis/common'
@@ -10,16 +9,12 @@ import EditPassword from './modal/editPassword'
 
 const { confirm } = Modal
 
-@connect((state, props) => ({
-  config: state.config,
-  staffResponse: state.staffResponse,
-}))
 export default class Header extends Component {
   // 初始化页面常量 绑定事件方法
   constructor(props, context) {
     super(props)
     this.state = {
-      loading: false,
+      // loading: false,
       editPasswordMadalIsOpen: false,
     }
     this.handleLogout = this.handleLogout.bind(this)
@@ -32,8 +27,8 @@ export default class Header extends Component {
 
   // 登出
   handleLogout() {
-    const { config } = this.props
-    const self = this
+    // const { config } = this.props
+    // const self = this
     confirm({
       title: '提示',
       content: '确认退出登录吗？',
@@ -42,7 +37,7 @@ export default class Header extends Component {
           // console.log(result)
           if (result.status === 1) {
             sessionStorage.clear()
-            config.staff = {}
+            // config.staff = {}
             hashHistory.push('/login')
           } else {
             message.warning(result.msg)
@@ -132,7 +127,7 @@ export default class Header extends Component {
                 {
                   gMenuList && gMenuList.map((item, index) => (<span
                     className={item.resKey === topKey ? 'topMenu on' : 'topMenu'}
-                    key={index}
+                    key={item.resKey}
                     onClick={() => this.props.topMenuClick(item, index)}
                   >{item.resName}</span>))
                 }

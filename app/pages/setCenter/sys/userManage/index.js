@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Spin, notification, Button, Popconfirm, Form, Input, message, Layout } from 'antd'
 import TableList from '@tableList'
 import { synUser } from '@apis/common'
@@ -20,10 +19,6 @@ const FormItem = Form.Item
 const { Content, Sider } = Layout
 const { fetchBtns } = require('@configs/common')
 
-// 连接公用常量、后端返回的数据方法  并放置在props里面调用
-@connect((state, props) => ({
-  config: state.config,
-}))
 @Form.create({})
 // 声明组件  并对外输出
 export default class app extends Component {
@@ -31,7 +26,7 @@ export default class app extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      activeTab: 'list',
+      // activeTab: 'list',
       searchtitle: '',
       PoliceAddVisible: false,
       synchronizeLoading: false,
@@ -40,7 +35,7 @@ export default class app extends Component {
       moduletitle: '',
       moduletype: '',
       currPeopleId: '',
-      hasList: false,
+      // hasList: false,
       searchKey: {
         keyword: '',
         pageSize: 10,
@@ -80,7 +75,7 @@ export default class app extends Component {
           this.getData(() => {
             this.setState({
               searchtitle: '杭州市',
-              hasList: true,
+              // hasList: true,
             })
           })
         })
@@ -95,7 +90,7 @@ export default class app extends Component {
     this.props.form.setFieldsValue({ key: '' })
   }
 
-  // region 收缩业务代码功能
+  // #region 收缩业务代码功能
 
   // 发送获取当前菜单的按钮权限
   getBtnRights() {
@@ -196,7 +191,7 @@ export default class app extends Component {
         this.getData(() => {
           this.setState({
             spinloading: false,
-            hasList: true,
+            // hasList: true,
           })
         })
       })
@@ -323,7 +318,7 @@ export default class app extends Component {
         width: '20%',
         render: (text, record, index) => {
           const roleNames = [];
-          (text || []).map((item, index) => {
+          (text || []).map((item) => {
             roleNames.push(item.roleName)
           })
           return roleNames.length === 0 ? '' : roleNames.join(',')
@@ -366,7 +361,7 @@ export default class app extends Component {
     ]
   }
 
-  // endregion
+  // #endregion
 
   render() {
     const {

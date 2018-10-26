@@ -25,7 +25,7 @@ class RoleCheckbox extends React.Component {
     }
   }
 
-  // region 收缩业务代码功能
+  // #region 收缩业务代码功能
 
   onChange(e) {
     const item = this.props.checkItem;
@@ -35,7 +35,7 @@ class RoleCheckbox extends React.Component {
     this.props.onChecked(item, e.target.checked);
   }
 
-  // endregion
+  // #endregion
 
   render() {
     return (

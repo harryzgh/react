@@ -1,24 +1,11 @@
-/*
- * @Author: yetingting
- * @Date: 2017-08-23 17:19:53
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2018-05-14 14:24:28
- */
-
 
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Button, Spin, Row, Col } from 'antd'
 import Drawer from '@components/draw/draw'
 import {
   fetchButtonList,
   fetchChangeModuleStatus,
 } from '@apis/manage'
-
-// 连接公用常量、后端返回的数据方法  并放置在props里面调用
-@connect((state, props) => ({
-  config: state.config,
-}))
 
 // 声明组件  并对外输出
 export default class pop extends Component {
@@ -49,7 +36,7 @@ export default class pop extends Component {
         const dataSource = []
         data.map((item) => {
           if (item.status === 0) {
-            const selectedRowKeys = this.state.selectedRowKeys
+            const { selectedRowKeys } = this.state
             selectedRowKeys.map((key) => {
               if (item.id === key) {
                 item.checked = true

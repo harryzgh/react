@@ -23,9 +23,7 @@ export default class app extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {
-
-      },
+      // data: {},
     }
     this._handleSubmit = this._handleSubmit.bind(this)
   }

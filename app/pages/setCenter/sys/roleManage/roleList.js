@@ -30,7 +30,7 @@ export default class app extends Component {
     }
   }
 
-  // region 收缩业务代码功能
+  // #region 收缩业务代码功能
 
   // 角色名点击
   roleNameClick = (roleid, roleType) => {
@@ -78,7 +78,7 @@ export default class app extends Component {
       </li>))
   }
 
-  // endregion
+  // #endregion
 
   render() {
     return (

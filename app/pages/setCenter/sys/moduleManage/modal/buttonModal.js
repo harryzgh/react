@@ -21,7 +21,7 @@ export default class pop extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedRowKeys: [],
+      // selectedRowKeys: [],
       // loading: false,
       // dataSource: [],
     }

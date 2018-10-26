@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { message } from 'antd'
+// import { message } from 'antd'
 import { brandName } from '@config'
 import '@styles/welcome.less'
 

@@ -1,12 +1,5 @@
-/*
- * @Author: duxianwei
- * @Date: 2017-08-10 17:29:00
- * @Last Modified by: duxianwei
- * @Last Modified time: 2018-05-17 20:08:10
- */
 
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Button, Form, Input, message, Select } from 'antd'
 import { regExpConfig } from '@reg'
 import Drawer from '@components/draw/draw'
@@ -16,11 +9,8 @@ import {
 } from '@apis/manage'
 
 const FormItem = Form.Item
-const Option = Select.Option
+const { Option } = Select
 
-@connect((state, props) => ({
-  config: state.config,
-}))
 @Form.create({})
 
 export default class Index extends Component {

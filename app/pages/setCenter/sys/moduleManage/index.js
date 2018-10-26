@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { Button, Layout, message } from 'antd'
-import { hashHistory } from 'react-router'
+// import { hashHistory } from 'react-router'
 import {
   fetchModuleList, // 获取模块列表
   fetchModuleDelete, // 删除模块

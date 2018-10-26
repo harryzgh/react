@@ -1,7 +1,7 @@
 
 
 import React, { Component } from 'react'
-import { Button, Form, Input, Modal, Select, message } from 'antd'
+import { Button, Form, Input, /* Modal, */ Select, message } from 'antd'
 import { regExpConfig } from '@reg'
 import Drawer from '@components/draw/draw'
 import {
@@ -29,7 +29,7 @@ export default class Index extends Component {
     this.props.form.setFieldsValue({
       roleName: this.props.value.roleName,
       sort: `${this.props.value.sort}`,
-      tjFlag: this.props.value.tjFlag != undefined ? String(this.props.value.tjFlag) : '1',
+      tjFlag: this.props.value.tjFlag !== undefined ? String(this.props.value.tjFlag) : '1',
     })
   }
 
@@ -56,9 +56,10 @@ export default class Index extends Component {
   }
 
   footer() {
+    const { loading } = this.state
     return (
       <div>
-        <Button type="primary" onClick={this.handleSubmit}>确定</Button>
+        <Button type="primary" onClick={this.handleSubmit} loading={loading}>确定</Button>
         <Button onClick={this.props.onCancel}>取消</Button>
       </div>
     )

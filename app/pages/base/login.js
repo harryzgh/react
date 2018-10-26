@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { hashHistory, Link } from 'react-router'
+import { hashHistory/* , Link */ } from 'react-router'
 import { Spin, Form, Icon, Input, Button, Row, Col, message } from 'antd'
 import { regExpConfig } from '@reg'
 import { brandName } from '@config'
@@ -38,7 +38,7 @@ export default class Login extends Component {
     this.props.dispatch(clearGformCache2({}))
   }
 
-  // region 收缩业务代码功能
+  // #region 收缩业务代码功能
 
   handleSubmit(e, isCertificates) {
     e.preventDefault()
@@ -85,7 +85,7 @@ export default class Login extends Component {
     })
   }
 
-  // endregion
+  // #endregion
 
   render() {
     const { getFieldDecorator } = this.props.form

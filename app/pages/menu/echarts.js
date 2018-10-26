@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 import echarts from 'echarts'
 
 @connect((state, props) => ({
@@ -11,9 +11,7 @@ export default class app extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: {
-
-      },
+      // data: {},
     }
   }
 

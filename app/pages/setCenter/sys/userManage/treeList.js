@@ -1,17 +1,14 @@
-/**
- * Created by 江夏云 on 2017/1/5.
- * editor:谢德训 2017-2-15 在头部添加文件修改记录
- */
+
 import React, { Component } from 'react'
 import { Tree } from 'antd'
 
-const TreeNode = Tree.TreeNode
+const { TreeNode } = Tree
 
 export default class TreeList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      expandedKeys: ['123'],
+      // expandedKeys: ['123'],
       defaultExpandedKeys: ['123'],
       deptCode: props.curDeptCode,
     }
@@ -31,13 +28,13 @@ export default class TreeList extends Component {
 
   // 展开事件
   onExpand = (expandedKeys) => {
-    this.setState({ expandedKeys })
+    // this.setState({ expandedKeys })
   }
 
   // 选中事件
   handleOnSelect(info, Nodes) {
     if (Nodes && Nodes.selectedNodes[0] && Nodes.selectedNodes[0].props && Nodes.selectedNodes[0].props.title) {
-      const title = Nodes.selectedNodes[0].props.title
+      const { title } = Nodes.selectedNodes[0].props
       this.props.onSelect(info, title)
     } else {
       this.props.onSelect()

@@ -73,7 +73,7 @@ export default class ModuleList extends Component {
   }
 
   render() {
-    const { dataSource, loading, scroll } = this.props
+    const { dataSource, loading/* , scroll */ } = this.props
     return (
       <div className="table-scrollfix">
         <Table

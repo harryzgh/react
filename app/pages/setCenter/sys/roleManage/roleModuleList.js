@@ -1,5 +1,4 @@
 
-
 import React, { Component } from 'react'
 import TableList from '@tableList'
 import RoleCheckbox from './roleCheckbox'
@@ -8,7 +7,7 @@ export default class app extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFirst: true,
+      // isFirst: true,
       checkedIds: [],
     }
     this.simpleData = {}
@@ -40,11 +39,11 @@ export default class app extends Component {
     }
   }
 
-  // region 收缩业务代码功能
+  // #region 收缩业务代码功能
 
   // 简化源数据保留id上下级关系
   simplifySourceData = (obj, resultData) => {
-    if (this.getJSONLength(obj) > 0) {
+    /* if (this.getJSONLength(obj) > 0) {
       for (const key in obj) {
         this.forAllData[obj[key].id] = obj[key]
         if (obj.hasOwnProperty(key)) {
@@ -54,6 +53,17 @@ export default class app extends Component {
           }
         }
       }
+    } */
+    // 使用object.keys 替代for in语句
+    const objArr = Object.keys(obj)
+    if (objArr.length > 0) {
+      objArr.map((key) => {
+        this.forAllData[obj[key].id] = obj[key]
+        resultData[obj[key].id] = {}
+        if (obj[key].children) {
+          this.simplifySourceData(obj[key].children, resultData[obj[key].id])
+        }
+      })
     }
   }
 
@@ -72,13 +82,13 @@ export default class app extends Component {
     this.setState({
       checkedIds: checkedIds,
     }, () => {
-      this.props.onChenckModify(checkedIds)
+      this.props.onCheckModify(checkedIds)
     })
   }
 
   // 根据当前id判断父级下是否还有其他被选中的子集，若无，则取消其父级的checkid
   getFatherById(parentId) {
-    let checkedIds = this.state.checkedIds
+    let { checkedIds } = this.state
     if (this.forAllData[parentId]) {
       const fatherArr = this.forAllData[parentId].children || []
       // 当fatherArr为1时，则标示当前取消的模块无同级元素，则直接取消父级
@@ -93,7 +103,11 @@ export default class app extends Component {
       if (fatherArr.length > 1) {
         let i = 0
         fatherArr.map((child) => {
-          this.onInArray(child.id, checkedIds) ? i++ : null
+          // this.onInArray(child.id, checkedIds) ? (i += 1) : null
+          if (this.onInArray(child.id, checkedIds)) {
+            return i += 1
+          }
+          return null
         })
         if (i === 0) {
           checkedIds = this.removeFromArray(parentId, checkedIds)
@@ -101,19 +115,30 @@ export default class app extends Component {
         }
       }
     }
+    console.log(checkedIds)
     return checkedIds
   }
 
   // 获取某一节点的子某一节点的子节点
   getChildById = (id, source) => {
-    for (const key in source) {
+    /* for (const key in source) {
       if (source.hasOwnProperty(key) && eval(key) === id) {
+        console.log(key)
         this.checkedArr = source[key]
       }
       if (this.getJSONLength(source[key]) > 0) {
         this.getChildById(id, source[key])
       }
-    }
+    } */
+    // 使用object.keys 替代for in语句
+    Object.keys(source).map((key) => {
+      if (key.toString() === id.toString()) {
+        this.checkedArr = source[key]
+      }
+      if (Object.keys(source[key]).length > 0) {
+        this.getChildById(id, source[key])
+      }
+    })
     return this.checkedArr
   }
 
@@ -137,9 +162,9 @@ export default class app extends Component {
 
   // 将父级树结构全部勾选
   setNewFatherChecked(id) {
-    const checkedIds = this.state.checkedIds
+    const { checkedIds } = this.state
     if (this.forAllData[id]) {
-      const parentId = this.forAllData[id].parentId
+      const { parentId } = this.forAllData[id]
       if (parentId && !this.onInArray(parentId, checkedIds)) {
         checkedIds.push(parentId)
         this.setNewFatherChecked(parentId)
@@ -150,7 +175,7 @@ export default class app extends Component {
 
   // 把某一选中元素的子集全部设为不选中
   setChildsUnChecked = (obj, results) => {
-    for (const key in obj) {
+    /* for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
         if (this.onInArray(eval(key), results)) {
           results = this.removeFromArray(eval(key), results)
@@ -160,7 +185,19 @@ export default class app extends Component {
         }
       }
     }
-    return results
+    return results */
+    // 使用object.keys 替代for in语句
+    let resultsArr = results
+    Object.keys(obj).map((key) => {
+      if (this.onInArray(parseInt(key, 10), resultsArr)) {
+        // resultsArr = resultsArr.filter(item => item !== parseInt(key, 10))
+        resultsArr = this.removeFromArray(parseInt(key, 10), resultsArr)
+      }
+      if (Object.keys(obj[key])) {
+        resultsArr = this.setChildsUnChecked(obj[key], resultsArr)
+      }
+    })
+    return resultsArr
   }
 
 
@@ -168,7 +205,7 @@ export default class app extends Component {
   removeFromArray(item, arr) {
     const array = arr || []
     for (let i = 0; i < array.length; i += 1) {
-      if (array[i] == item) {
+      if (array[i] === item) {
         array.splice(i, 1)
         return array
       }
@@ -188,7 +225,7 @@ export default class app extends Component {
   }
 
   // 获取JSON对象长度
-  getJSONLength(obj) {
+  /* getJSONLength(obj) {
     const count = 0
     // for (const key in obj) {
     //   if (obj.hasOwnProperty(key)) {
@@ -197,7 +234,7 @@ export default class app extends Component {
     // }
     // return count
     return Object.keys(obj).length
-  }
+  } */
 
   columns() {
     const _self = this
@@ -255,7 +292,7 @@ export default class app extends Component {
     // )
   }
 
-  // endregion
+  // #endregion
 
   render() {
     const {

@@ -13,7 +13,7 @@ export default class app extends Component {
   componentDidMount() {
   }
 
-  // region 收缩业务代码功能
+  // #region 收缩业务代码功能
 
   columns() {
     return (
@@ -31,7 +31,7 @@ export default class app extends Component {
     )
   }
 
-  // endregion
+  // #endregion
 
   render() {
     const {
