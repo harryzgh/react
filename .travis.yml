@@ -1,0 +1,15 @@
+sudo: false
+
+language: node_js
+
+node_js:
+  - 10
+
+cache:
+  directories:
+    - $HOME/.npm
+
+matrix:
+  fast_finish: true
+  include:
+    - env: TEST_TYPE=lint
