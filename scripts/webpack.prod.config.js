@@ -25,7 +25,7 @@ const webpackConfigProd = {
     // 将打包后的资源注入到html文件内    
     new HtmlWebpackPlugin({
       template: resolve('../app/index.html'),
-      mapConfig:"http://56.32.3.21/config/qdkjdsj_map_config.js"
+      mapConfig:'http://192.168.0.1/map_config.js'
     }),
     /* webpack自带压缩代码*/
     // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
@@ -42,7 +42,7 @@ const webpackConfigProd = {
       }
     }),
     // 分析代码
-    new BundleAnalyzerPlugin({ analyzerPort: 3011 }),
+    // new BundleAnalyzerPlugin({ analyzerPort: 3011 }),
     new Copy([
       { from: './app/images', to: './images' },
     ]),
