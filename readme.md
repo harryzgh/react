@@ -167,7 +167,12 @@ npm install
 
 npm start 
 ```
+### 对了，如果有小伙伴因为网络原因npm包下载不下来，那么可以试用我已经下载好的安装包，地址在
+```
+https://github.com/duxianwei520/resource/blob/master/react/node_modules.rar
 
+```
+欢迎下载
 想要体验聊天室功能  先开启socket服务 运行命令
 
 ```
@@ -215,8 +220,6 @@ https://github.com/duxianwei520/node
 
 ```
 基本功能差不多，目前实现了注册登录以及获取用户信息等3个接口的真实api
-
-#### 注意：如果你更新代码发现登录界面进不去，而且没有用到真实的api，那就进入login.js里直接在handleSubmit方法里面把sessionStorage.setItem('token', 'dupi');hashHistory.push('/');这两行的注释打开，用户名密码界面不报错就可以登录跳转到内页
 
 
 ## 说明

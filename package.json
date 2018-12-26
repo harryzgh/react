@@ -79,6 +79,7 @@
     "antd": "^3.10.1",
     "axios": "^0.18.0",
     "babel-polyfill": "~6.26.0",
+    "clipboard": "^2.0.4",
     "draft-js": "^0.10.3",
     "echarts": "^4.0.2",
     "esri-loader": "0.3.1",
